@@ -1,0 +1,42 @@
+digraph Car1 {
+    compound=true;
+    fontname = "Bitstream Vera Sans"
+    fontsize = 12
+    rankdir=LR
+    
+    node [shape="record", fontname = "Bitstream Vera Sans", fontsize = 12];
+    
+    subgraph cluster_Stack {
+        temp [label="{Car|temp}|<v>"];
+        myFund [label="{int|myFund}|<v>10000"];
+        newCar [label="{Car|newCar}|<v>"];
+        oldCar [label="{Car|oldCar}|<v>"];
+    }
+
+    subgraph cluster_Heap {
+        subgraph cluster_oldCar {
+            oldCar_model [label="{String|model}|<v>"];
+            oldCar_price [label="{int|price}|<v>2000"];
+        }        
+        oldCar_model_String [label="\"Ka\""]        
+        oldCar_model:v -> oldCar_model_String
+        
+        subgraph cluster_newCar {
+            newCar_model [label="{String|model}|<v>"];
+            newCar_price [label="{int|price}|<v>300000"];
+        }
+        newCar_model_String [label="\"911\""]        
+        newCar_model:v -> newCar_model_String
+        
+        subgraph cluster_temp {
+            temp_model [label="{String|model}|<v>"];
+            temp_price [label="{int|price}|<v>300000"];
+        }
+        temp_model_String [label="\"911\""]        
+        temp_model:v -> temp_model_String
+    }
+    
+    oldCar:v -> temp_model [lhead=cluster_temp];
+    newCar:v -> oldCar_model [lhead=cluster_oldCar];
+    temp:v -> newCar_model [lhead=cluster_newCar];
+}
