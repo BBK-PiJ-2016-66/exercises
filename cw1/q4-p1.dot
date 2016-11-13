@@ -1,0 +1,42 @@
+digraph Oyster1 {
+    compound=true;
+    fontname = "Bitstream Vera Sans"
+    fontsize = 12
+    rankdir=LR
+    
+    node [shape="record", fontname = "Bitstream Vera Sans", fontsize = 12];
+    
+    subgraph cluster_Stack {
+        card2 [label="{OysterCard|card2}|<v>"];
+        tcard [label="{Travelcard|tcard}|<v>"];
+        card1 [label="{OysterCard|card1}|<v>"];
+    }
+
+    subgraph cluster_Heap {
+        subgraph cluster_card2 {
+            card2_travelcardAttached [label="{Travelcard|travelcardAttached}|<v>"];
+            card2_amount [label="{double|amount}|<v>6.3"];            
+            card2_registered [label="{boolean|registered}|<v>true"];
+            card2_autotopup [label="{boolean|autotopup}|<v>false"];
+        }
+        card2_travelcardAttached:v -> tcard_type [lhead=cluster_tcard];
+
+        subgraph cluster_tcard {
+            tcard_zone [label="{int|zone}|<v>2"];
+            tcard_type [label="{String|type}|<v>"];
+        }
+        tcard_type_String [label="\"week\""];
+        tcard_type:v -> tcard_type_String;
+        
+        subgraph cluster_card1 {
+            card1_travelcardAttached [label="{Travelcard|travelcardAttached}|<v>null"];
+            card1_amount [label="{double|amount}|<v>50.0"];            
+            card1_registered [label="{boolean|registered}|<v>false"];
+            card1_autotopup [label="{boolean|autotopup}|<v>true"];
+        }
+    }
+    
+    card1:v -> card1_autotopup [lhead=cluster_card1];
+    tcard:v -> tcard_type [lhead=cluster_tcard];
+    card2:v -> card2_autotopup [lhead=cluster_card2];
+}
