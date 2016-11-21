@@ -13,7 +13,10 @@ public class MobilePhone extends OldPhone {
      */
     public void call(String number) {
         super.call(number);
-        
+        this.addNumber(number);        
+    }
+    
+    protected void addNumber(String number) {
         String[] newNumbers = new String[10];
         newNumbers[0] = number;
         

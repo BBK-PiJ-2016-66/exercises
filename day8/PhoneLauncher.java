@@ -19,6 +19,7 @@ public class PhoneLauncher {
         smart.call(new String("01111111111"));
         smart.call(new String("02222222222"));
         smart.call(new String("03333333333"));
+        smart.call(new String("00444444444"));
         smart.ringAlarm(new String("7am"));
         smart.playGame(new String("PackMan"));
         smart.browseWeb(new String("http://dcs.bbk.ac.uk"));
