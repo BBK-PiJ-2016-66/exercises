@@ -15,7 +15,7 @@ public class PhoneLauncher {
      * Uses all methods in SmatPhone
      */
     public void launch() {
-        SmartPhone smart = new SmartPhone();
+        SmartPhone smart = new SmartPhone("Samsung");
         smart.call(new String("01111111111"));
         smart.call(new String("02222222222"));
         smart.call(new String("03333333333"));
@@ -25,6 +25,13 @@ public class PhoneLauncher {
         smart.browseWeb(new String("http://dcs.bbk.ac.uk"));
         smart.printLastNumbers();
         String position = smart.findPosition();
-        System.out.println("My position is " + position);        
+        System.out.println("My position is " + position);
+        
+        OldPhone old = new OldPhone("BT");        
+        System.out.println("Old phone brand is: " + old.getBrand());
+        
+        MobilePhone mobile = new MobilePhone("Nokia");
+        System.out.println("Mobile phone brand is: " + mobile.getBrand());
+        System.out.println("Smart phone brand is: " + smart.getBrand());
     }
 }

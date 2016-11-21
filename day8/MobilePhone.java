@@ -9,6 +9,14 @@ public class MobilePhone extends OldPhone {
     private String[] lastNumbers = new String[10];
     
     /**
+     * Constructor
+     * @param brand
+     */
+    public MobilePhone(String brand) {
+        super(brand);
+    }
+    
+    /**
      * @Override
      */
     public void call(String number) {

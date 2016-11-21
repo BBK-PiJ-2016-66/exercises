@@ -4,6 +4,14 @@
 public class SmartPhone extends MobilePhone {
 
     /**
+     * Constructor
+     * @param brand
+     */
+    public SmartPhone(String brand) {
+        super(brand);
+    }
+    
+    /**
      * Makes calls over the Internet
      * @Override
      */
