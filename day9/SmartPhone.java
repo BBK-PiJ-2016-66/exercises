@@ -1,7 +1,7 @@
 /**
  * Smart phone class
  */
-public class SmartPhone extends MobilePhone {
+public class SmartPhone extends MobilePhone implements Mobilephone {
 
     /**
      * Constructor
