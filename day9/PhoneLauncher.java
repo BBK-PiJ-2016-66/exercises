@@ -26,5 +26,11 @@ public class PhoneLauncher {
         myPhone.printLastNumbers();
         String position = myPhone.findPosition();
         System.out.println("My position is " + position);
+        
+        this.testPhone(myPhone);
+    }
+    
+    public void testPhone(Phone phone) {
+        phone.call(new String("01111111111"));
     }
 }
