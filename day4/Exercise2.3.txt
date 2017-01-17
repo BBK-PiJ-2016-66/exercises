@@ -1,0 +1,112 @@
+2.3  Flow of execution
+
+Look at the following code (with line numbers for clarity):
+
+1   String requestUser() {
+2       String result = System.console().readLine();
+3       return result;
+2
+4   }
+5
+6   void createUser() {
+7       String user = requestUser();
+8       while (!isValidUser(user)) {
+9           println("That name is not valid. Please try again.);
+10           user = requestUser();
+11       }
+12       insertUserInDB(user);
+13   }
+14
+15   void deleteUser() {
+16       String user = requestUser();
+17       while (!isValidUser(user)) {
+18           println("That name is not valid. Please try again.);
+19           user = requestUser();
+20       }
+21       if (existsInDB(user) {
+22           deleteUserInDB(user);
+23       } else {
+24           println "That user does not exist."
+25       }
+26   }
+27
+28   void insertUserInDB(String user) {
+29       // do things with DB that we will cover in later weeks
+30   }
+31
+32   void deleteUserFromDB(String user) {
+33       // do things with DB that we will cover in later weeks
+34   }
+35
+36   boolean existsInDB(String user) {
+37       // do things with DB that we will cover in later weeks
+38   }
+39
+40   boolean isValidUser(String login) {
+41       boolean loginIsValid = true;
+42       for (int i = 0; i < login.length(); i++) {
+43           char c = login.charAt(i);
+44           if (!Character.isLetter(c) || !Character.isLowerCase(c)) {
+45               loginIsValid = false;
+46           }
+47       }
+48       return true;
+49   }
+50
+51   boolean running = true;
+52   while (running) {
+53       println "What would you like to do?";
+54       println "1 - Enter a new user";
+55       println "2 - Delete a user";
+56       println "0 - Exit";
+57       print   "> ";
+58       String str = System.console().readLine();
+59       int option = Integer.parseInt(str);
+60       switch (option) {
+61       case 0: running = false;
+62               break;
+63       case 1: createUser();
+64               break;
+65       case 2: deleteUser();
+66               break;
+67       default: println "Invalid option. Please try again."
+68       }
+69   }
+
+Follow the execution of the code as the user enters the following sequences of inputs:
+
+• 4, 0
+• 1, john, 0
+• 1, john smith, johnsmith, 0
+• 2, userNotInDB, 0
+• 1, john, 2, john, 0
+
+Hint: all of them start at 40.
+
+
+Answer:
+
+• 4, 0
+    67 -> 52
+    61
+• 1, john, 0
+    63 -> 6 -> 7 -> 1 -> 2
+    3 -> 8 -> 40 -> 48 -> 12 -> 28
+    61
+• 1, john smith, johnsmith, 0
+    63 -> 6 -> 7 -> 1 -> 2
+    3 -> 8 -> 40 -> 48 -> 12 -> 28
+    67 -> 52
+    61
+• 2, userNotInDB, 0
+    65 -> 15 -> 16
+    17 -> 32 -> 21 -> ??
+    61
+• 1, john, 2, john, 0
+    63 -> 6 -> 7 -> 1 -> 2
+    3 -> 8 -> 40 -> 48 -> 12 -> 28
+    65 -> 15 -> 16
+    17 -> 32 -> 21 -> ??
+    61
+
+NB: Because method deleteUserFromDB is not implemented we cannot track it's called!
