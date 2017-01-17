@@ -1,0 +1,47 @@
+// 5  Rectangle
+//
+// Write a program that reads the X and Y coordinates of two points and then outputs the area of 
+// a rectangle where both points are opposite corners. Use the following class to store the data 
+// for the points:
+//
+// class Rectangle {
+//     Point upLeft;
+//     Point downRight;
+// }
+//
+// Your program should calculate (and write on the screen) the perimeter and area of the rectangle.
+//
+// Note: For exercises 5, 6, and 7 you must access (i.e. read or write) the value of the coordinates 
+// of the points through the rectangle, not directly through the point, i.e. myRectangle.upLeft.x, 
+// not point.x or x.
+
+class Rectangle {
+    Point upLeft;
+    Point downRight;
+}
+
+class Point {
+    double x;
+    double y;
+}
+
+// create rectangle
+Rectangle r = new Rectangle();
+
+print "Enter the X coordinate of up left point: ";
+double x = System.console().readLine();
+r.upLeft.x = Double.parseDouble(x);
+
+print "Enter the Y coordinate of up left point: ";
+double y = System.console().readLine();
+r.upLeft.y = Double.parseDouble(y);
+
+print "Enter the X coordinate of down left point: ";
+double x = System.console().readLine();
+r.downRight.x = Double.parseDouble(x);
+
+print "Enter the Y coordinate of down left point: ";
+double y = System.console().readLine();
+r.downRight.y = Double.parseDouble(y);
+
+double p = (r.downRight.x - r.upLeft.x) + (r.upLeft.x - r.downRight.x)

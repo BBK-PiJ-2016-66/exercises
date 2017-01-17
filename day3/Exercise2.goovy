@@ -1,0 +1,43 @@
+// 2  Calculator
+//
+// Write a program that reads two numbers from the user and then offers a menu with the four basic operations:
+// addition, subtraction, multiplication, and division. Once the user has selected an operation from the menu, 
+// the calculator performs the operation.
+// 
+// Hint:  In the same way that there exists an Integer.parseInt() method to parse integers, there is a 
+// Double.parseDouble() method to parse real numbers.
+
+String s = null;
+
+print "Enter the first number: ";
+s = System.console().readLine();
+Double first = Double.parseDouble(s);
+
+print "Enter the second number: ";
+s = System.console().readLine();
+Double second = Double.parseDouble(s);
+
+println "Which operation would you like to perform?";
+println " [A]ddition";
+println " [S]ubtraction";
+println " [M]ultiplication";
+println " [D]ivision";
+s = System.console().readLine().toUpperCase();
+
+Double result = null;
+
+if (s.toUpperCase() == "A") {
+    result = first + second;
+} else if (s.toUpperCase() == "S") {
+    result = first - second;
+} else if (s.toUpperCase() == "M") {
+    result = first * second;
+} else if (s.toUpperCase() == "D") {
+    result = first / second;
+}
+
+if (result != null) {
+    println "Result is: " + result;
+} else {
+    println "Wrong choice, try again!";
+}

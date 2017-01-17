@@ -1,0 +1,71 @@
+// 4  Distance point–to–point
+// 
+// Write a program that reads the X and Y coordinates of three points and then outputs 
+// which of the three are closer.
+//
+// Use the following class to store the data for the points:
+// class Point {
+//     double x;
+//     double y;
+// }
+
+
+class Point {
+    double x;
+    double y;
+}
+
+// input helpers
+String x = null;
+String y = null;
+
+// point 1
+Point p1 = new Point();
+
+print "Enter the X coordinate of point 1: ";
+x = System.console().readLine();
+p1.x = Double.parseDouble(x);
+
+print "Enter the Y coordinate of point 1: ";
+y = System.console().readLine();
+p1.y = Double.parseDouble(y);
+
+
+// point 2
+Point p2 = new Point();
+
+print "Enter the X coordinate of point 2: ";
+x = System.console().readLine();
+p2.x = Double.parseDouble(x);
+
+print "Enter the Y coordinate of point 2: ";
+y = System.console().readLine();
+p2.y = Double.parseDouble(y);
+
+// point 3
+Point p3 = new Point();
+
+print "Enter the X coordinate of point 3: ";
+x = System.console().readLine();
+p3.x = Double.parseDouble(x);
+
+print "Enter the Y coordinate of point 3: ";
+y = System.console().readLine();
+p3.y = Double.parseDouble(y);
+
+// distance between points
+Double d12 = Math.sqrt(((p1.x - p2.x) ** 2) + ((p1.y - p2.y) ** 2));
+Double d13 = Math.sqrt(((p1.x - p3.x) ** 2) + ((p1.y - p3.y) ** 2));
+Double d23 = Math.sqrt(((p2.x - p3.x) ** 2) + ((p2.y - p3.y) ** 2));
+
+String closer = null;
+
+if (d12 <= d13 && d12 <= d23) {
+    closer = "1 and 2";
+} else if (d13 <= d23) {
+    closer = "1 and 3";
+} else {
+    closer = "2 and 3";
+}
+
+println "Closest points are " + closer;
